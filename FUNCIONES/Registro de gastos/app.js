@@ -1,4 +1,5 @@
 let gastos = [];
+let C = true 
 
 function registrarGasto() {
     let cantidad = parseFloat(prompt("Ingrese la cantidad gastada: "));
@@ -21,8 +22,8 @@ function mostrarResumenGastos(){
     alert(resumen);
 }
 
-while (true) {
-    let opcion = parseInt(prompt("Menu de opciones\n\n1. Registrar Gasto\n2. Calcular Total de Gastos\n3. Mostrar Resumen de Gastos\n\nIngrese una opcion: "));
+while (C == true) {
+    let opcion = parseInt(prompt("Menu de opciones\n\n1. Registrar Gasto\n2. Calcular Total de Gastos\n3. Mostrar Resumen de Gastos\n4. Salir\n\nIngrese una opcion: "));
     switch (opcion) {
         case 1:
             registrarGasto();
@@ -32,6 +33,10 @@ while (true) {
             break;
         case 3:
             mostrarResumenGastos();
+            break;
+        case 4:
+            alert("Gracias por usar el programa");
+            C = false
             break;
         default:
             alert("Opcion no valida");
