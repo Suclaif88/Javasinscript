@@ -1,9 +1,9 @@
 function aggItem() {
-    const itemInput = document.getElementById('itemInput');//se obtiene el id de el input donde se ingresa el texto y se guarda en una variable
-    const itemList = document.getElementById('itemList');//se obtiene el id de el el elemento lista donde se añadita el texto y se guarda en una variable
+    let itemInput = document.getElementById('itemInput');//se obtiene el id de el input donde se ingresa el texto y se guarda en una variable
+    let itemList = document.getElementById('itemList');//se obtiene el id de el el elemento lista donde se añadita el texto y se guarda en una variable
 
     
-    const itemText = itemInput.value.trim();// Obtiene el texto del campo de entrada y elimina los espacios en blanco al inicio y al final
+    let itemText = itemInput.value.trim();// Obtiene el texto del campo de entrada y elimina los espacios en blanco al inicio y al final
     //obtener el valor del input y guardarlo en una variable
     //trim() es un metodo de string y elimina los espacios en blanco
     
@@ -19,7 +19,7 @@ function aggItem() {
     }
 
     // crear un nuevo elemento de lista ('li') 
-    const listItem = document.createElement('li');
+    let listItem = document.createElement('li');
     listItem.textContent = itemText; // y le asigna el texto del ítem
 
     listItem.onclick = function() {
@@ -37,7 +37,6 @@ function aggItem() {
     });
 
     itemInput.value = ''; // limpia el campo de entrada
-    itemInput.focus(); //pone el foco en el campo osea el "cursor"
 }
 
 function eliminarItem(item) {
