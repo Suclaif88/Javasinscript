@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="app.js" defer></script>
+    <title>Calculadora</title>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>CALCULAR PROPINA</h1>
+
+        <input id="total" type="number" placeholder="Ingrese el total">
+        <br>
+        <br>
+        <div class="checks">
+            <input type="radio" name="propina" value="1.1" checked>10%
+            <input type="radio" name="propina" value="1.15">15%
+            <input type="radio" name="propina" value="1.20">20%
+            <input type="radio" name="propina" value="1.30">30%
+            <input type="radio" name="propina" value="1.50">50%
+        </div>
+        <br>
+        <button class="bt" onclick="calcularPropina()">CALCULAR</button>
+
+        <br>
+
+</div>
+    
+</body>
+</html>
