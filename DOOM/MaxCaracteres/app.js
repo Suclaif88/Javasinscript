@@ -14,4 +14,4 @@ function caracter(){
         document.getElementById("disponible").style.color = "black";
     }
 
-}
+} //arreglar el funcionamiento de esto
