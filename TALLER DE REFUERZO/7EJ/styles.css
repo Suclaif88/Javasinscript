@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+}
+
+h1 {
+    color: #333;
+}
+
+#inputElement {
+    margin-right: 10px;
+    padding: 5px;
+}
+
+button {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 5px;
+    margin: 5px 0;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button.edit, button.delete {
+    margin-left: 10px;
+}
+
+#hoverDiv {
+    margin-top: 20px;
+    padding: 20px;
+    background: #e3e3e3;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+#keyPressed {
+    margin-top: 20px;
+}
+
+#resizeMessage {
+    margin-top: 20px;
+}
