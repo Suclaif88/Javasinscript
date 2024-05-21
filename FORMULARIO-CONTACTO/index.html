@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="app.js"></script>
+    <title>Agenda-Telefonica</title>
+</head>
+<body>
+<div>
+    <h1>AGENDA TELEFONICA</h1>
+    <label>NOMBRE</label>
+    <input type="text" id="nombre"><br><br>
+    <label>TELEFONO</label>
+    <input type="text" id="tel"><br><br>
+    <label>EMAIL</label>
+    <input type="email" id="email"><br><br> 
+    <button onclick="addContact()">Agregar</button>
+</div>
+
+<br>
+<table id="contactTable" border="4">
+    <thead>
+        <tr>
+            <th>NOMBRE</th>
+            <th>TELEFONO</th>
+            <th>CORREO</th>
+            <th>ACCIONES</th>
+        </tr>
+    </thead>
+    <tbody id="contactlist">
+        <!--AQUI SE AGREGAN LOS CONTACTOS-->
+    </tbody>
+</table>
+</body>
+</html>
