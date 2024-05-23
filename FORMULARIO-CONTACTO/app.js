@@ -11,7 +11,7 @@ function addContact() {
         name: name,
         tel: tel,
         email: email
-    };
+    }; // arreglar
     contactlist.innerHTML += `<tr>
     <td>${contact.name}</td>
     <td>${contact.tel}</td>
