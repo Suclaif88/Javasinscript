@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Preguntas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="icon" type="image/png" href="favicon.ico">
+    <link rel="stylesheet" media="all" href="styles.css">
+</head>
+<body>
+
+    <div class="area">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <div class="context">
+        
+        <div id="quiz-container" class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md text-center">
+            <div id="question-container">
+                <div id="question" class="text-xl font-semibold mb-4"></div>
+                <div id="options" class="space-y-2"></div>
+                <button id="next-btn" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hidden">Siguiente</button>
+            </div>
+            <div id="result-container" class="hidden">
+                <div id="score" class="text-xl font-semibold mb-4"></div>
+                <button id="restart-btn" class="mt-4 bg-green-500 text-white px-4 py-2 rounded">Reiniciar</button>
+                <button id="brag-btn" class="mt-4 bg-yellow-500 text-white px-4 py-2 rounded">Alardear</button>
+                <div id="gif-container" class="hidden">
+                    <img src="gato.gif" alt="Gif de alardeo">
+                </div>
+            </div>            
+        </div>
+
+    </div>
+
+    <a href="index.html">
+    <button id="exit-btn" class="bg-red-600 text-white px-10 py-2 rounded">Salir</button>
+    </a>
+
+    <script src="app.js"></script>
+</body>
+</html>
