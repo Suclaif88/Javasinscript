@@ -52,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
     
-//agregar la mecla de las respuestas aleatoriamente
     let preguntasAleatorias = [];
     let indicePreguntaActual = 0;
     let puntaje = 0;
@@ -138,7 +137,15 @@ const gifContainer = document.getElementById('gif-container');
 
 botonBrag.addEventListener('click', () => {
     gifContainer.classList.toggle('hidden');
+    if (!gifContainer.classList.contains('hidden')) {
+        gifContainer.style.display = 'flex';
+        gifContainer.style.justifyContent = 'center';
+        gifContainer.style.alignItems = 'center';
+    } else {
+        gifContainer.removeAttribute('style');
+    }
 });
+
 
 
 
