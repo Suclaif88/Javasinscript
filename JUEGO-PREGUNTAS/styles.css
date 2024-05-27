@@ -171,7 +171,8 @@ body{
 
 #exit-btn {
     position: absolute;
-    bottom: 150px;
-    left: 50%;
+    bottom: 70%;
+    left: 10%;
     transform: translateX(-50%);
 }
+
