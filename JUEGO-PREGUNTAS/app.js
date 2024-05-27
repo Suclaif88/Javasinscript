@@ -66,8 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function comenzarQuiz() {
         preguntasAleatorias = preguntas.sort(() => Math.random() - 0.5);
-        indicePreguntaActual = 0;
-        puntaje = 0;
         contenedorQuiz.classList.remove('hidden');
         contenedorResultado.classList.add('hidden');
         mostrarPregunta();
