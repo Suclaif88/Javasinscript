@@ -1,4 +1,4 @@
-const nameinput = document.getElementById("nombre");
+        const nameinput = document.getElementById("nombre");
         const telinput = document.getElementById("tel");
         const emailinput = document.getElementById("email");
         const contactlist = document.getElementById("contactlist");
