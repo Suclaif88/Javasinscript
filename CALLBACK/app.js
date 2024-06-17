@@ -1,10 +1,10 @@
-function saludo(nombre) {
-    console.log(`Hola, ${nombre}`);
+function firstTask(callback) {
+    console.log("Primera tarea completada.");
+    callback();
 }
 
-function procesarEntradaUsuario(callback) {
-    const nombre = prompt('Por favor ingresa tu nombre.');
-    callback(nombre); //esto es un callback pasar un parametro a una funcion que se definio antes
+function secondTask() {
+    console.log("Segunda tarea completada.");
 }
 
-procesarEntradaUsuario(saludo);
+firstTask(secondTask);
