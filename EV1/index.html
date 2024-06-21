@@ -3,21 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biblioteca</title>
+    <title>RESERVAS</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Biblioteca</h1>
-    <form id="libro-form">
-        <input type="text" id="nombre" placeholder="Nombre del libro" required>
-        <input type="text" id="autor" placeholder="Autor del libro" required>
-        <button type="submit">Agregar Libro</button>
+    <h1>RESERVAS</h1>
+    <form id="reserva-form">
+        <input type="text" id="nombre" placeholder="Nombre del reservador" required>
+        <input type="text" id="n_personas" placeholder="Numero de personas" required>
+        <input type="date" id="fecha" required>
+        <button type="submit">Agregar Reserva</button>
     </form>
-    <table id="tabla-libros">
+    <table id="tabla-reservas">
         <thead>
             <tr>
                 <th>Nombre</th>
-                <th>Autor</th>
+                <th># Personas</th>
+                <th>Fecha</th>
                 <th>Acciones</th>
             </tr>
         </thead>

@@ -1,41 +1,43 @@
-class Libro {
-    constructor(nombre, autor) {
+class Reserva {
+    constructor(nombre, n_personas, fecha) {
         this.nombre = nombre;
-        this.autor = autor;
+        this.n_personas = n_personas;
+        this.fecha = fecha;
     }
 }
 
-class Biblioteca {
+class Reservas {
     constructor() {
-        const librosGuardados = JSON.parse(localStorage.getItem('libros')) || [];
-        this.libros = librosGuardados.map(libro => new Libro(libro.nombre, libro.autor));
+        const reservasGuardadas = JSON.parse(localStorage.getItem('reservas')) || [];
+        this.reservas = reservasGuardadas.map(reserva => new Reserva(reserva.nombre, reserva.n_personas));
         this.actualizarTabla();
     }
 
-    agregarLibro(libro) {
-        this.libros.push(libro);
+    agregarReserva(reserva) {
+        this.reservas.push(reserva);
         this.guardarEnLocalStorage();
         this.actualizarTabla();
     }
 
-    eliminarLibro(index) {
-        this.libros.splice(index, 1);
+    eliminarReserva(index) {
+        this.reservas.splice(index, 1);
         this.guardarEnLocalStorage();
         this.actualizarTabla();
     }
 
     guardarEnLocalStorage() {
-        localStorage.setItem('libros', JSON.stringify(this.libros));
+        localStorage.setItem('reservas', JSON.stringify(this.reservas));
     }
 
     actualizarTabla() {
-        const tbody = document.querySelector('#tabla-libros tbody');
+        const tbody = document.querySelector('#tabla-reservas tbody');
         tbody.innerHTML = '';
-        this.libros.forEach((libro, index) => {
+        this.reservas.forEach((reserva, index) => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td>${libro.nombre}</td>
-                <td>${libro.autor}</td>
+                <td>${reserva.nombre}</td>
+                <td>${reserva.n_personas}</td>
+                <td>${reserva.fecha}</td>
                 <td><button class="eliminar-btn" data-index="${index}">Eliminar</button></td>
             `;
             tbody.appendChild(row);
@@ -48,26 +50,27 @@ class Biblioteca {
         botonesEliminar.forEach(boton => {
             boton.addEventListener('click', (e) => {
                 const index = e.target.getAttribute('data-index');
-                this.eliminarLibro(index);
+                this.eliminarReserva(index);
             });
         });
     }
 }
 
-const biblioteca = new Biblioteca();
+const reservas = new Reservas();
 
-document.getElementById('libro-form').addEventListener('submit', function(e) {
+document.getElementById('reserva-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const nombre = document.getElementById('nombre').value;
-    const autor = document.getElementById('autor').value;
+    const n_personas = document.getElementById('n_personas').value;
+    const fecha = document.getElementById('fecha').value;
 
-    if (nombre === '' || autor === '') {
+    if (nombre === '' || n_personas === '' || fecha === '') {
         alert('Por favor, completa todos los campos.');
         return;
     }
 
-    const libro = new Libro(nombre, autor);
-    biblioteca.agregarLibro(libro);
+    const reserva = new Reserva(nombre, n_personas, fecha);
+    reservas.agregarReserva(reserva);
 
-    document.getElementById('libro-form').reset();
+    document.getElementById('reserva-form').reset();
 });

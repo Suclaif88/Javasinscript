@@ -24,8 +24,16 @@ input[type="text"] {
     width: 200px;
 }
 
+input[type="date"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+}
+
 button {
-    background-color: #4CAF50;
+    background-color: #31b2d3;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -35,7 +43,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #3c8b91;
 }
 
 table {
@@ -67,7 +75,7 @@ th {
     background-color: #e53935;
 }
 
-#tabla-libros {
+#tabla-reservas {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     overflow: hidden;
