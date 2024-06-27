@@ -48,6 +48,7 @@
             <div id="lista-progreso"></div>
             <br>
             <button class="reset-btn-gestion" id="reset-datos">Restablecer Datos de Rutinas</button>
+            <button class="reset-btn-gestion" id="reset-datos-all">Restablecer Datos por Completo</button>
         </section>
     </div>
 
@@ -127,6 +128,36 @@ resetDatosBtn.addEventListener('click', () => {
             Swal.fire(
                 'Datos restablecidos',
                 'Los datos de progresos han sido restablecidos correctamente.',
+                'success'
+            ).then(() => {
+                location.reload();
+            });
+        }
+    });
+});
+
+
+const resetDatosBtnAll = document.getElementById('reset-datos-all');
+
+resetDatosBtnAll.addEventListener('click', () => {
+    event.preventDefault();
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: '¿Deseas borrar todos los datos del localstorage?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, borrar datos',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            localStorage.removeItem('usuario');
+            localStorage.removeItem('progresos');
+            localStorage.removeItem('rutinas');
+            Swal.fire(
+                'Datos borrados',
+                'Los datos han sido borrados del localStorage.',
                 'success'
             ).then(() => {
                 location.reload();
