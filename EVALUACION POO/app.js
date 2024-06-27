@@ -9,7 +9,7 @@ class Persona {
     saludar() {
         console.log(`Hola, me llamo ${this.nombre} y tengo ${this.edad} años.`);
     }
-}
+}       
 
 // Crear un objeto
 const persona1 = new Persona('Juan', 30);
