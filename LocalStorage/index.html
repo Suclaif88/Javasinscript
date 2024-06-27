@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Progreso</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+
+</head>
+<body>
+    <div class="header">  
+        <div class="header__logo">
+            <strong>Rutinas de Ejercicio</strong>
+        </div>
+        <nav class="navbar">
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="index.html" class="navbar__link"><i data-feather="home"></i><span>Inicio</span></a>
+                </li>
+                <li class="navbar__item">
+                    <a href="Gestion.html" class="navbar__link"><i data-feather="message-square"></i><span>Gestión de Rutinas</span></a>        
+                </li>
+                <li class="navbar__item">
+                    <a href="User.html" class="navbar__link"><i data-feather="users"></i><span>Registro de Usuario</span></a>        
+                </li>
+            </ul>
+        </nav>
+    </div>
+<br>
+<br>
+<br>
+    <div class="contenedor-registro-progreso">
+        <section class="formulario-progreso">
+            <h2 class="encabezado-progreso">Registro de Progreso</h2>
+            <form class="formulario-progreso-form" id="form-progreso">
+                <label class="etiqueta-progreso" for="fecha-progreso">Fecha:</label>
+                <input class="campo-fecha" type="date" id="fecha-progreso" required>
+                
+                <label class="etiqueta-progreso" for="detalle-ejercicios">Ejercicios Realizados:</label>
+                <textarea class="campo-detalle" id="detalle-ejercicios" required></textarea>
+                
+                <label class="etiqueta-progreso" for="observaciones">Observaciones:</label>
+                <textarea class="campo-observaciones" id="observaciones"></textarea>
+                
+                <button class="boton-progreso" type="submit">Registrar Progreso</button>
+            </form>
+            <div id="lista-progreso"></div>
+            <br>
+            <button class="reset-btn-gestion" id="reset-datos">Restablecer Datos de Rutinas</button>
+        </section>
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        //---------Registro de Progreso----------------------
+document.addEventListener('DOMContentLoaded', () => {
+    const formularioProgreso = document.getElementById('form-progreso');
+    const contenedorProgresos = document.getElementById('lista-progreso');
+
+    function obtenerProgresosDesdeLocalStorage(key) {
+        return JSON.parse(localStorage.getItem(key)) || [];
+    }
+
+    function guardarProgresosEnLocalStorage(key, data) {
+        localStorage.setItem(key, JSON.stringify(data));
+    }
+
+    formularioProgreso.addEventListener('submit', (evento) => {
+        evento.preventDefault();
+        const nuevoProgreso = {
+            fecha: document.getElementById('fecha-progreso').value,
+            ejercicios: document.getElementById('detalle-ejercicios').value,
+            observaciones: document.getElementById('observaciones').value
+        };
+        const progresos = obtenerProgresosDesdeLocalStorage('progresos');
+        progresos.push(nuevoProgreso);
+        guardarProgresosEnLocalStorage('progresos', progresos);
+        mostrarListadoDeProgresos();
+        formularioProgreso.reset();
+    });
+
+    function mostrarListadoDeProgresos() {
+        contenedorProgresos.innerHTML = '';
+        const progresos = obtenerProgresosDesdeLocalStorage('progresos');
+        progresos.forEach((progreso, indice) => {
+            const nuevoDiv = document.createElement('div');
+            nuevoDiv.innerHTML = `
+                <h3>Fecha: ${progreso.fecha}</h3>
+                <p>Ejercicios realizados: ${progreso.ejercicios}</p>
+                <p>Observaciones: ${progreso.observaciones}</p>
+                <div class="boton-eliminar-container">
+                    <button class="boton-eliminar" onclick="eliminarProgreso(${indice})">Eliminar</button>
+                </div>
+            `;
+            contenedorProgresos.appendChild(nuevoDiv);
+        });
+    }
+
+    window.eliminarProgreso = (indice) => {
+        const progresos = obtenerProgresosDesdeLocalStorage('progresos');
+        progresos.splice(indice, 1);
+        guardarProgresosEnLocalStorage('progresos', progresos);
+        mostrarListadoDeProgresos();
+    };
+
+    mostrarListadoDeProgresos();
+});
+
+
+const resetDatosBtn = document.getElementById('reset-datos');
+
+resetDatosBtn.addEventListener('click', () => {
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: '¿Deseas restablecer los datos de progresos?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, restablecer datos',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            localStorage.removeItem('progresos');
+            Swal.fire(
+                'Datos restablecidos',
+                'Los datos de progresos han sido restablecidos correctamente.',
+                'success'
+            ).then(() => {
+                location.reload();
+            });
+        }
+    });
+});
+    </script>
+    
+</body>
+</html>

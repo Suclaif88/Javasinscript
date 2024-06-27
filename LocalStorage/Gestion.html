@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion-Rutinas</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+
+</head>
+<body>
+    <div class="header">  
+        <div class="header__logo">
+            <strong>Rutinas de Ejercicio</strong>
+        </div>
+        <nav class="navbar">
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="index.html" class="navbar__link"><i data-feather="home"></i><span>Inicio</span></a>
+                </li>
+                <li class="navbar__item">
+                    <a href="Gestion.html" class="navbar__link"><i data-feather="message-square"></i><span>Gestión de Rutinas</span></a>        
+                </li>
+                <li class="navbar__item">
+                    <a href="User.html" class="navbar__link"><i data-feather="users"></i><span>Registro de Usuario</span></a>        
+                </li>
+            </ul>
+        </nav>
+    </div>
+<br>
+<br>
+<br>
+
+<div class="container">
+    <section id="gestion-rutinas" class="section">
+        <h2 class="section-title">Gestión de Rutinas</h2>
+        <form id="form-gestion-rutinas" class="form">
+            <label for="nombre-rutina-input">Nombre de la Rutina:</label>
+            <input type="text" id="nombre-rutina-input" required>
+            
+            <label for="ejercicios-input">Ejercicios (separados por comas):</label>
+            <textarea id="ejercicios-input" required></textarea>
+            
+            <label for="duracion-input">Duración (minutos):</label>
+            <input type="number" id="duracion-input" required>
+            
+            <label for="repeticiones-input">Repeticiones:</label>
+            <input type="number" id="repeticiones-input" required>
+            
+            <button type="submit" class="form-btn-gestion">Guardar Rutina</button>
+        </form>
+        <div id="lista-rutinas-gestion" class="list-gestion"></div>
+        <button id="reset-rutinas-btn-gestion" class="reset-btn-gestion">Restablecer Datos de Rutinas</button>
+    </section>
+</div>
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        //--------GESTION DE RUTINAS-----------------
+        document.addEventListener('DOMContentLoaded', () => {
+            const formRutinas = document.getElementById('form-gestion-rutinas');
+            const listaRutinas = document.getElementById('lista-rutinas-gestion');
+            const resetRutinasBtn = document.getElementById('reset-rutinas-btn-gestion');
+        
+            function obtenerRutinasDesdeLocalStorage(key) {
+                return JSON.parse(localStorage.getItem(key)) || [];
+            }
+        
+            function guardarRutinasEnLocalStorage(key, data) {
+                localStorage.setItem(key, JSON.stringify(data));
+            }
+        
+            formRutinas.addEventListener('submit', (evento) => {
+                evento.preventDefault();
+                const nuevaRutina = {
+                    nombre: document.getElementById('nombre-rutina-input').value,
+                    ejercicios: document.getElementById('ejercicios-input').value.split(','),
+                    duracion: document.getElementById('duracion-input').value,
+                    repeticiones: document.getElementById('repeticiones-input').value
+                };
+                const rutinas = obtenerRutinasDesdeLocalStorage('rutinas');
+                rutinas.push(nuevaRutina);
+                guardarRutinasEnLocalStorage('rutinas', rutinas);
+                mostrarListadoDeRutinas();
+                formRutinas.reset();
+            });
+        
+            function mostrarListadoDeRutinas() {
+                listaRutinas.innerHTML = '';
+                const rutinas = obtenerRutinasDesdeLocalStorage('rutinas');
+                rutinas.forEach((rutina, indice) => {
+                    const nuevoDiv = document.createElement('div');
+                    nuevoDiv.innerHTML = `
+                        <h3>${rutina.nombre}</h3>
+                        <p>Ejercicios: ${rutina.ejercicios.join(', ')}</p>
+                        <p>Duración: ${rutina.duracion} minutos</p>
+                        <p>Repeticiones: ${rutina.repeticiones}</p>
+                        <div class="boton-eliminar-container">
+                            <button class="boton-eliminar" onclick="eliminarRutina(${indice})">Eliminar</button>
+                        </div>
+                    `;
+                    listaRutinas.appendChild(nuevoDiv);
+                });
+            }
+        
+            window.eliminarRutina = (indice) => {
+                const rutinas = obtenerRutinasDesdeLocalStorage('rutinas');
+                rutinas.splice(indice, 1);
+                guardarRutinasEnLocalStorage('rutinas', rutinas);
+                mostrarListadoDeRutinas();
+            };
+        
+            resetRutinasBtn.addEventListener('click', () => {
+                Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: '¿Deseas restablecer los datos de rutinas?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sí, restablecer datos',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        localStorage.removeItem('rutinas');
+                        Swal.fire(
+                            'Datos restablecidos',
+                            'Los datos de rutinas han sido restablecidos correctamente.',
+                            'success'
+                        ).then(() => {
+                            location.reload();
+                        });
+                    }
+                });
+            });
+        
+            mostrarListadoDeRutinas();
+        });
+    </script>
+    
+</body>
+</html>
