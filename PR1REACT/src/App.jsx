@@ -1,9 +1,14 @@
-function App() {
+import Home from './components/Home';
+import Navbar from './components/Navbar';
+import './index.css';
 
-
+const App = () => {
   return (
-      <h1>PRIMER COMPONENTE</h1>
-  )
-}
+    <div>
+      <Navbar />
+      <Home />
+    </div>
+  );
+};
 
-export default App
+export default App;

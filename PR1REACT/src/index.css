@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+  }
+  
+  .navbar__menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .navbar__item {
+    flex: 1;
+  }
+  
+  .navbar__link {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  .navbar__link:hover {
+    background-color: #575757;
+  }
+  
+  .navbar__link span {
+    margin-left: 8px;
+  }
+  
