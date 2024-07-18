@@ -1,12 +1,17 @@
-import Home from './components/Home';
-import Navbar from './components/Navbar';
 import './index.css';
+import Boton from './components/Boton';
+import Gallery from './components/Gallery';
 
 const App = () => {
   return (
-    <div>
-      <Navbar />
-      <Home />
+    <div className='container'>
+      <h1>HOLA MUNDO</h1>
+      <Boton />
+      <br></br>
+      <br></br>
+      <Gallery />
+      <Gallery />
+      <Gallery />
     </div>
   );
 };
