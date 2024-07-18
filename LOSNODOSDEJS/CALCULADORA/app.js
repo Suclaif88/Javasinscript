@@ -1,20 +1,22 @@
-var N1 = document.getElementById('num1')
-var N2 = document.getElementById('num2')
-var campo = document.getElementById('resultado')
+function limpiarPantalla() {
+    document.getElementById('pantalla').value = '';
+}
 
-function calcular(){
-    var num1 = parseInt(N1.value)
-    var num2 = parseInt(N2.value)
-    var resultado = num1 + num2
-    alert('La suma es: '+ resultado)
-    resultado = num1 - num2
-    alert('La resta es: '+ resultado)
-    resultado = num1 * num2
-    alert('La multiplicación es: '+ resultado)
-    if (num2!= 0){
-        resultado = num1 / num2
-        alert('La división es: '+ resultado)
-    } else {
-        alert('No se puede dividir por cero')
+function borrarUltimo() {
+    var pantalla = document.getElementById('pantalla');
+    pantalla.value = pantalla.value.slice(0, -1);
+}
+
+function agregarAPantalla(valor) {
+    var pantalla = document.getElementById('pantalla');
+    pantalla.value += valor;
+}
+
+function calcular() {
+    var pantalla = document.getElementById('pantalla');
+    try {
+        pantalla.value = eval(pantalla.value);
+    } catch (e) {
+        pantalla.value = 'Error';
     }
 }
