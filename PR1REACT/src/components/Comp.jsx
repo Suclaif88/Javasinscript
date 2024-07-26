@@ -2,7 +2,7 @@ function Comp() {
   return (
     <div>
         <header>
-            <img src="" />
+            <img src="/src/assets/react.svg" />
             <h1>React Fundamentos</h1>
             <p>Conceptos basicos de react</p>
         </header>
