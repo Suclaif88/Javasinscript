@@ -2,16 +2,14 @@ import './index.css';
 // import Contador from './components/Contador';
 // import Carrusel from './components/Carrusel';
 import Comp from './components/Comp';
+import Navbar from './components/Navbar';
 
 const App = () => {
   return (
-    <div className='container'>
-      {/* <h1>HOLA MUNDOOOOO</h1> */}
-      {/* <Contador />
-      <Carrusel /> */}
-
+    <>
+      <Navbar />
       <Comp />
-    </div>
+    </>
   );
 };
 
