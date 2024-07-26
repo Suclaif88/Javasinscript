@@ -1,6 +1,7 @@
 function Comp() {
   return (
     <div>
+      <br/>
         <header>
             <img src="/src/assets/react.svg" />
             <h1>React Fundamentos</h1>
