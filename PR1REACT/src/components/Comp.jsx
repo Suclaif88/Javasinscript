@@ -1,16 +1,24 @@
 function Comp() {
   return (
-    <div>
+    <div>|
         <header>
-            <img src="/src/assets/react.svg" />
-            <h1>React Fundamentos</h1>
-            <p>Conceptos basicos de react</p>
+            <img src="/src/assets/ice-cream.svg" />
+            <h1>Helados Baratos</h1>
+            <p>Muy baratos estos helados</p>
         </header>
 
         <main>
-            <h2>COMENZAMOS HACIENDO UNA PICADA UMM QUE RICO</h2>
+          <section>
+            <h2>UMM QUE RICO</h2>
+            <center>
+            <ul>
+              <li>Helado de coco</li>
+              <li>Helado de limon para el tigre feroz</li>
+            </ul>
+            </center>
+          </section>
         </main>
-      
+        <footer>© Todos los derechos reservados Heladería Barata</footer>
     </div>
   );
 }
