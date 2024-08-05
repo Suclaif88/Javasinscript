@@ -13,6 +13,7 @@ const FormularioEstudiante = () => {
     Swal.fire({
       title: aprobado ? '¡Aprobaste la materia!' : 'No aprobaste la materia.',
       icon: aprobado ? 'success' : 'error',
+      text: aprobado ? `Tu promedio es ${notaFinal}` : `Tu promedio es ${notaFinal}`, 
       confirmButtonText: 'Ok'
     });
   };
@@ -20,17 +21,17 @@ const FormularioEstudiante = () => {
   return (
     <div className="form-container">
       <form className="formulario-estudiante" onSubmit={handleSubmit(onSubmit)}>
-        <input type="text" placeholder="Nombre" {...register('nombre', { required: true })} />
-        {errors.nombre && <span className="error-message">Este campo es obligatorio</span>}
+        <input type="text" placeholder="Nombre" {...register('nombre', { required: true, minLength : 3, maxLength : 15})} />
+        {errors.nombre && <span className="error-message">Este campo es obligatorio y debe ser de 3 caracteres minimo</span>}
         
-        <input type="text" placeholder="Apellidos" {...register('apellidos', { required: true })} />
-        {errors.apellidos && <span className="error-message">Este campo es obligatorio</span>}
+        <input type="text" placeholder="Apellidos" {...register('apellidos', { required: true, minLength : 3, maxLength : 15 })} />
+        {errors.apellidos && <span className="error-message">Este campo es obligatorio y debe ser de 3 caracteres minimo</span>}  
         
         <input type="number" placeholder="Teléfono" {...register('telefono', { required: true })} />
         {errors.telefono && <span className="error-message">Este campo es obligatorio</span>}
         
-        <input type="number" placeholder="Identificación" {...register('identificacion', { required: true })} />
-        {errors.identificacion && <span className="error-message">Este campo es obligatorio</span>}
+        <input type="number" placeholder="Identificación" {...register('identificacion', { required: true, minLength : 6, maxLength : 10 })} />
+        {errors.identificacion && <span className="error-message">Este campo es obligatorio y debe ser de 6 digitos minimo</span>}
         
         <input type="email" placeholder="Email" {...register('email', { required: true })} />
         {errors.email && <span className="error-message">Este campo es obligatorio</span>}
